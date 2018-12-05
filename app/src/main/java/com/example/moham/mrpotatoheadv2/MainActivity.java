@@ -13,91 +13,96 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
+    // create bodyPart object for all 10 parts
+    bodyPart arms = new bodyPart("arms", R.id.arms, R.id.armsCheckBox);
+    bodyPart eyes = new bodyPart("eyes", R.id.eyes, R.id.eyesCheckBox );
+    bodyPart hat = new bodyPart("hat", R.id.hat, R.id.hatCheckBox);
+    bodyPart ears = new bodyPart("ears", R.id.ears, R.id.earsCheckBox);
+    bodyPart shoes = new bodyPart("shoes", R.id.shoes, R.id.shoesCheckBox);
+    bodyPart glass = new bodyPart("glass", R.id.glass, R.id.glassCheckBox);
+    bodyPart mouth = new bodyPart("mouth", R.id.mouth, R.id.mouthCheckBox);
+    bodyPart mus = new bodyPart("mus", R.id.mus, R.id.musCheckBox);
+    bodyPart nose = new bodyPart("nose", R.id.nose, R.id.noseCheckBox);
+    bodyPart brows = new bodyPart("brows", R.id.brows, R.id.browsCheckBox);
 
-    // add log in screen
-    // add mrs potato head
-    // make a slick background
-
-    Boolean isBodyPartLists [] = {false};
-
-    ArrayList<Boolean> isBodyPartList = new ArrayList<Boolean>();
-    ArrayList<Integer> idBodyPartList = new ArrayList<Integer>();
-    ArrayList<String> bodyPartList = new ArrayList<String>();
+    // add all the parts to an array
+    bodyPart[] bodyPartList = {arms, eyes, hat, ears, shoes, glass, mouth, mus, nose, brows};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        isBodyPartList.add(false);
-        idBodyPartList.add(R.id.arms);
-        bodyPartList.add("arms");
-
-        isBodyPartList.add(false);
-        idBodyPartList.add(R.id.nose);
-        bodyPartList.add("nose");
-
-        isBodyPartList.add(false);
-        idBodyPartList.add(R.id.eyes);
-        bodyPartList.add("eyes");
-
-        isBodyPartList.add(false);
-        idBodyPartList.add(R.id.ears);
-        bodyPartList.add("ears");
-
-        isBodyPartList.add(false);
-        idBodyPartList.add(R.id.mus);
-        bodyPartList.add("mus");
-
-        isBodyPartList.add(false);
-        idBodyPartList.add(R.id.mouth);
-        bodyPartList.add("mouth");
-
-        isBodyPartList.add(false);
-        idBodyPartList.add(R.id.glass);
-        bodyPartList.add("glass");
-
-        isBodyPartList.add(false);
-        idBodyPartList.add(R.id.hat);
-        bodyPartList.add("hat");
-
-        isBodyPartList.add(false);
-        idBodyPartList.add(R.id.shoes);
-        bodyPartList.add("shoes");
-
-        isBodyPartList.add(false);
-        idBodyPartList.add(R.id.brows);
-        bodyPartList.add("brows");
     }
 
     public void checkClicked(View v){
+        /**
+        This function will get called when ANY of the checkboxes is checked. Depending on that
+        the corresponding picture of the bodyPart will be visible and the text will be colored.
+         */
+
+        // convert view to checkbox and get its value
         CheckBox checkbox = (CheckBox) v;
         String checkBoxText = checkbox.getText().toString();
         boolean boxValue = checkbox.isChecked();
 
-        for (int i = 0; i < idBodyPartList.size(); i++){
+        // loop over all the body parts and sets to visible and colored if checked
+        for (int i = 0; i < bodyPartList.length; i++){
 
-            if (boxValue && checkBoxText.equals(bodyPartList.get(i))){
-                ImageView image = (ImageView) findViewById(idBodyPartList.get(i));
+            if (boxValue && checkBoxText.equals(bodyPartList[i].getName())){
+                ImageView image = (ImageView) findViewById(bodyPartList[i].getId());
                 image.setVisibility(View.VISIBLE);
-                isBodyPartList.set(i, true);
+                bodyPartList[i].setVisable(true);
+                // sets the text to a pink color
+                checkbox.setTextColor(0xFFD81B60);
 
             }
-            else if ((!boxValue && checkBoxText.equals(bodyPartList.get(i)))){
-                ImageView image = (ImageView) findViewById(idBodyPartList.get(i));
+            else if ((!boxValue && checkBoxText.equals(bodyPartList[i].getName()))){
+                ImageView image = (ImageView) findViewById(bodyPartList[i].getId());
                 image.setVisibility(View.INVISIBLE);
-                isBodyPartList.set(i, false);
+                bodyPartList[i].setVisable(false);
+                // restores the text to original black
+                checkbox.setTextColor(0xFF000000);
             }
-
         }
+    }
 
+    public void clearAll(View w){
+        /**
+         * Thie function will remove all the body parts. It's equivalent to unchecking
+         * all the checkboxes at once.
+         */
+        for (int i = 0; i < bodyPartList.length; i++){
+            ImageView image = (ImageView) findViewById(bodyPartList[i].getId());
+            image.setVisibility(View.INVISIBLE);
+            bodyPartList[i].setVisable(false);
+            CheckBox checkbox = findViewById(bodyPartList[i].getCheckboxId());
+            checkbox.setTextColor(0xFF000000);
+            checkbox.setChecked(false);
+        }
+    }
+
+    public void dressAll(View w){
+        /**
+         * dressAll function is will add all the body parts. It's equivalent to checking
+         * all the checkboxes at once.
+         */
+        for (int i = 0; i < bodyPartList.length; i++){
+
+            ImageView image = (ImageView) findViewById(bodyPartList[i].getId());
+            image.setVisibility(View.VISIBLE);
+            bodyPartList[i].setVisable(true);
+            CheckBox checkbox = findViewById(bodyPartList[i].getCheckboxId());
+            checkbox.setTextColor(0xFFD81B60);
+            checkbox.setChecked(true);
+        }
     }
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState); // always call super
+        super.onSaveInstanceState(outState);
 
-        for (int i = 0; i < idBodyPartList.size(); i++){
-            outState.putBoolean(bodyPartList.get(i), isBodyPartList.get(i));
+        // save all the checkedboxes in the 'visible' attribute of the bodyPart object
+        for (int i = 0; i < bodyPartList.length; i++){
+           outState.putBoolean(bodyPartList[i].getName(), bodyPartList[i].getVisable());
         }
     }
 
@@ -105,17 +110,19 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
 
-        for (int i = 0; i < idBodyPartList.size(); i++) {
-            isBodyPartList.set(i, savedInstanceState.getBoolean(bodyPartList.get(i)));
-        }
 
-        for (int i = 0; i < idBodyPartList.size(); i++){
-            if (isBodyPartList.get(i)){
-                ImageView image = (ImageView) findViewById(idBodyPartList.get(i));
+        for (int i = 0; i < bodyPartList.length; i++){
+            // restore the saved value in the bodyPart object
+            bodyPartList[i].setVisable(savedInstanceState.getBoolean(bodyPartList[i].getName()));
+
+            // in case the saved value was true(box checked), make the image visible and color text
+            if (bodyPartList[i].getVisable()){
+                ImageView image = (ImageView) findViewById(bodyPartList[i].getId());
                 image.setVisibility(View.VISIBLE);
+                bodyPartList[i].setVisable(true);
+                CheckBox checkbox = findViewById(bodyPartList[i].getCheckboxId());
+                checkbox.setTextColor(0xFFD81B60);
             }
         }
-
     }
-
 }

@@ -1,3 +1,5 @@
+##Extra Functionality
+
 The standard Mr. PotatoHead had a few more extra functionality than the prescribed app. 
 
 

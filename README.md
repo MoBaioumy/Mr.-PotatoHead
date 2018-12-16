@@ -6,9 +6,9 @@ This app is about the adorable Toy Story character Mr. Potatohead! Use the check
 
 
 
-![Vertical Potatohead]()
+![Vertical Potatohead](https://github.com/artix15/Mr.-PotatoHead/blob/master/doc/vertical%20-%20everything.png)
 
 Also try the landscape version.
 
-![Landscape potatohead]()
+![Landscape potatohead](https://github.com/artix15/Mr.-PotatoHead/blob/master/doc/horizontal%20-%20few%20selected.png)
 

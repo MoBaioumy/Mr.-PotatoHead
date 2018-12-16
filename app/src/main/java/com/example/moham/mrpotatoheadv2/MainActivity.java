@@ -13,6 +13,9 @@ import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
+    final int lightPink = 0xFFD81B60;
+    final int black = 0xFF000000;
+
     // create bodyPart object for all 10 parts
     bodyPart arms = new bodyPart("arms", R.id.arms, R.id.armsCheckBox);
     bodyPart eyes = new bodyPart("eyes", R.id.eyes, R.id.eyesCheckBox );
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 image.setVisibility(View.VISIBLE);
                 bodyPartList[i].setVisable(true);
                 // sets the text to a pink color
-                checkbox.setTextColor(0xFFD81B60);
+                checkbox.setTextColor(lightPink);
 
             }
             else if ((!boxValue && checkBoxText.equals(bodyPartList[i].getName()))){
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 image.setVisibility(View.INVISIBLE);
                 bodyPartList[i].setVisable(false);
                 // restores the text to original black
-                checkbox.setTextColor(0xFF000000);
+                checkbox.setTextColor(black);
             }
         }
     }
@@ -76,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             image.setVisibility(View.INVISIBLE);
             bodyPartList[i].setVisable(false);
             CheckBox checkbox = findViewById(bodyPartList[i].getCheckboxId());
-            checkbox.setTextColor(0xFF000000);
+            checkbox.setTextColor(black);
             checkbox.setChecked(false);
         }
     }
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             image.setVisibility(View.VISIBLE);
             bodyPartList[i].setVisable(true);
             CheckBox checkbox = findViewById(bodyPartList[i].getCheckboxId());
-            checkbox.setTextColor(0xFFD81B60);
+            checkbox.setTextColor(lightPink);
             checkbox.setChecked(true);
         }
     }
@@ -121,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                 image.setVisibility(View.VISIBLE);
                 bodyPartList[i].setVisable(true);
                 CheckBox checkbox = findViewById(bodyPartList[i].getCheckboxId());
-                checkbox.setTextColor(0xFFD81B60);
+                checkbox.setTextColor(lightPink);
             }
         }
     }

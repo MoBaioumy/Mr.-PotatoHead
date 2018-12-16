@@ -5,6 +5,13 @@ public class bodyPart {
     private int id, checkboxId;
     private Boolean visable;
 
+    /**
+     * Default constructor for body part
+     * @param name
+     * @param id
+     * @param checkboxId
+     */
+
     public bodyPart(String name, int id, int checkboxId) {
         this.name = name;
         this.id = id;

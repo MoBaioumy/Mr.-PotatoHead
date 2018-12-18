@@ -2,11 +2,11 @@
 
 This app is about the adorable Toy Story character Mr. Potatohead! Use the checkboxes to add or remove all his body parts. 
 
-**Make sure to see the [extra functionality](https://github.com/artix15/Mr.-PotatoHead/blob/master/doc/Extra.md) than the standard app!** 
+**Make sure to see the [extra functionality](https://github.com/artix15/Mr.-PotatoHead/blob/master/doc/Extra.md ) than the standard app!** 
 
 
 
-![Vertical Potatohead](https://github.com/artix15/Mr.-PotatoHead/blob/master/doc/vertical%20-%20everything.png)
+![Vertical Potatohead](https://github.com/artix15/Mr.-PotatoHead/blob/master/doc/vertical%20-%20everything.png = 250x)
 
 Also try the landscape version.
 

@@ -1,5 +1,3 @@
-## Extra Functionality
-
 The standard Mr. PotatoHead had a few more extra functionality than the prescribed app. 
 
 
@@ -19,6 +17,8 @@ The standard Mr. PotatoHead had a few more extra functionality than the prescrib
    When having the body parts checked, the check sign is set in a color. The text is then automatically changed to match the following color. Observe the difference in the following screen shot. 
 
    ![Half checked](https://github.com/artix15/Mr.-PotatoHead/blob/master/doc/vertical%20-%20few%20selected.png)
+
+   ________________________________
 
 4. **Everything is setup in objects**
    In the code a bodyPart object is created. This eases the coding and is good practice; however, one could argue it's a bit overkill for such a small. 

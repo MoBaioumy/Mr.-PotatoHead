@@ -1,5 +1,10 @@
 package com.example.moham.mrpotatoheadv2;
 
+/**
+ * Created by Mohamed Baioumy
+ * Fall 2018 Native app Studio
+ */
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
